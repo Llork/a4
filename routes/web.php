@@ -17,6 +17,22 @@ Route::get('/', function() {
 });
 
 
+/**
+* Drop then create database a4
+* (only accessible locally)
+*/
+if(App::environment('local')) {
+
+    Route::get('/drop', function() {
+
+        DB::statement('DROP database a4');
+        DB::statement('CREATE database a4');
+
+        return 'Dropped database a4; created database a4.';
+    });
+
+};
+
 
 
 
