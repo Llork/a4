@@ -31,6 +31,7 @@ class CreateItemsTable extends Migration
      		$table->text('description')->nullable();
      		$table->date('incident_date');
             $table->string('dictionary')->nullable();
+            # $table->foreign('dictionary')->references('unique_nickname')->on('dictionaries');
      		$table->string('image_url')->nullable();
      		$table->string('more_info_link')->nullable();
 

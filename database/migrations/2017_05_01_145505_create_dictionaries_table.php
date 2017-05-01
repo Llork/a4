@@ -26,9 +26,15 @@ class CreateDictionariesTable extends Migration
      		$table->timestamps();
 
      		# The rest of the fields...
+            $table->string('unique_nickname')->unique();
             $table->string('title');
-            $table->integer('year_published');
-            $table->integer('year_acquired');
+            $table->integer('year_published')->nullable();
+            $table->integer('year_acquired')->nullable();
+            $table->string('cover_type')->nullable();
+            $table->string('cover_color')->nullable();
+            $table->integer('pages')->nullable();
+            $table->integer('columns_per_page')->nullable();
+            $table->string('location')->nullable();
      		$table->text('comments')->nullable();
             $table->string('image_url')->nullable();
      		$table->string('more_info_link')->nullable();

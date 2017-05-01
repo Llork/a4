@@ -23,5 +23,18 @@ class ItemsTableSeeder extends Seeder
              'image_url' => null,
              'more_info_link' => null
          ]);
+
+         Item::insert([
+              'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+              'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+              'type' => 'dictionary',
+              'summary' => 'oak tree',
+              'description' => 'On May 1, 2017, tree work was done at my house for only the second time since we moved here in 1994.  The main thing done was removal of a huge, dead oak tree limb.  After they left, I flipped dictionary open.  Landed on ‘oar’, with ‘oak’ only 1/4 inch from my finger.',
+              'incident_date' => '2014/04/17',
+              'dictionary' => 'my original Merriam-Webster',
+              'image_url' => null,
+              'more_info_link' => null
+          ]);
+
     }
 }
