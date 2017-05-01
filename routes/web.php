@@ -11,6 +11,13 @@
 |
 */
 
+// added 4-30-2017:
+Route::get('/', function() {
+  return ('Welcome to Assignment 4');
+});
+
+/* commented out 4-30-2017:
 Route::get('/', function () {
     return view('welcome');
 });
+*/
