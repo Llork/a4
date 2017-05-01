@@ -31,8 +31,8 @@ class CreateItemsTable extends Migration
      		$table->text('description')->nullable();
      		$table->date('incident_date');
             $table->string('dictionary')->nullable();
-     		$table->string('image_url');
-     		$table->string('more_info_link');
+     		$table->string('image_url')->nullable();
+     		$table->string('more_info_link')->nullable();
 
      		# FYI: skipping the 'tags' field for now, since I still have to view lecture 13...
 

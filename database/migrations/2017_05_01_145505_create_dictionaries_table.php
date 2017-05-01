@@ -30,8 +30,8 @@ class CreateDictionariesTable extends Migration
             $table->integer('year_published');
             $table->integer('year_acquired');
      		$table->text('comments')->nullable();
-            $table->string('image_url');
-     		$table->string('more_info_link');
+            $table->string('image_url')->nullable();
+     		$table->string('more_info_link')->nullable();
 
      	});
     }
