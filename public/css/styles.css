@@ -15,7 +15,14 @@ img#logo {
     width:250px;
 }
 
-.incident-date {
+p.incident-date {    
     color:#999999;
     font-style:italic;
+    margin:0;
+    padding:0;
+}
+
+h3.incident-summary {
+    margin:0;
+    padding:0;
 }

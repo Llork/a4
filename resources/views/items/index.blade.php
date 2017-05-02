@@ -16,9 +16,9 @@
         @else
             @foreach($items as $item)
                 <div class='item'>
-                    <h3>{{ $item->summary }}</h3>
-                    <p class="incident-date">{{ $item->incident_date }}</p>
-                    <p>{{ $item->description }}</p>
+                    <h3 class='incident-summary'>{{ $item->summary }}</h3>
+                    <p class='incident-date'>{{ $item->incident_date }}</p>
+                    <p>{{ $item->description }}</p>                    
                     <hr>
                 </div>
             @endforeach
