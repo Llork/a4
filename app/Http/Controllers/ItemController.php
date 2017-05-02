@@ -8,13 +8,21 @@ use App\Item;
 
 class ItemController extends Controller
 {
+    /**
+	* GET
+    * /
+    * retrieve all rows from the items table
+	*/
     public function index() {
+        $items = Item::orderBy('summary')->get(); # Database query
+        return view('items.index')->with([
+            'items' => $items,
+        ]);
 
-        # Get all rows
-        $result = Item::all();
-            dump($result->toArray());
+    /*  $result = Item::all();
+        dump($result->toArray());
 
-        return ('Welcome to ItemController.php and Assignment 4');
+        return ('Welcome to ItemController.php and Assignment 4');*/
 
     } // end of index function
 

@@ -1,0 +1,21 @@
+
+body {
+    background-color:#ee3839;
+}
+
+.container {
+    background-color:#ffffff;
+    border:1px solid #000000;
+    margin:30px auto;
+    padding:15px;
+    width:70%;
+}
+
+img#logo {
+    width:250px;
+}
+
+.incident-date {
+    color:#999999;
+    font-style:italic;
+}
