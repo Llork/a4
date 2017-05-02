@@ -11,10 +11,16 @@
 |
 */
 
-// added 4-30-2017:
+/*
 Route::get('/', function() {
   return ('Welcome to Assignment 4');
-});
+});*/
+
+/**
+* GET
+* /
+*/
+Route::get('/', 'ItemController@index');
 
 
 /**
