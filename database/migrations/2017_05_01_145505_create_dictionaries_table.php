@@ -29,7 +29,7 @@ class CreateDictionariesTable extends Migration
             $table->string('unique_nickname')->unique();
             $table->string('title');
             $table->integer('year_published')->nullable();
-            $table->integer('year_acquired')->nullable();
+            $table->string('year_acquired')->nullable();
             $table->string('cover_type')->nullable();
             $table->string('cover_color')->nullable();
             $table->integer('pages')->nullable();

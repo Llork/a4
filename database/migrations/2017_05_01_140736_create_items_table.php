@@ -28,9 +28,12 @@ class CreateItemsTable extends Migration
      		# The rest of the fields...
      		$table->string('type');
             $table->string('summary');
-     		$table->text('description')->nullable();
+            $table->string('dictionary_word1')->nullable();
+            $table->string('dictionary_word2')->nullable();
+            $table->string('dictionary_word3')->nullable();
+     		$table->text('description')->nullable();            
      		$table->date('incident_date');
-                        
+
      		$table->string('image_url')->nullable();
      		$table->string('more_info_link')->nullable();
 
