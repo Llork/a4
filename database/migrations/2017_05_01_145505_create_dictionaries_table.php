@@ -17,15 +17,14 @@ class CreateDictionariesTable extends Migration
 
      	Schema::create('dictionaries', function (Blueprint $table) {
 
-     		# Increments method will make a Primary, Auto-Incrementing field.
-     		# Most tables start off this way
+     		# Create auto-incrementing primary key:
      		$table->increments('id');
 
-     		# This generates two columns: `created_at` and `updated_at` to
-     		# keep track of changes to a row
+            # Create 'created_at' and 'updated_at' so that
+     		# you can know when a given row was created and last modified:
      		$table->timestamps();
 
-     		# The rest of the fields...
+     		# Build the remaining columns:
             $table->string('unique_nickname')->unique();
             $table->string('title');
             $table->integer('year_published')->nullable();

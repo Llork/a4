@@ -17,21 +17,20 @@ class CreateItemsTable extends Migration
 
      	Schema::create('items', function (Blueprint $table) {
 
-     		# Increments method will make a Primary, Auto-Incrementing field.
-     		# Most tables start off this way
+     		# Create auto-incrementing primary key:
      		$table->increments('id');
 
-     		# This generates two columns: `created_at` and `updated_at` to
-     		# keep track of changes to a row
+     		# Create 'created_at' and 'updated_at' so that
+     		# you can know when a given row was created and last modified:
      		$table->timestamps();
 
-     		# The rest of the fields...
+     		# Build the remaining columns:
      		$table->string('type');
             $table->string('summary');
             $table->string('dictionary_word1')->nullable();
             $table->string('dictionary_word2')->nullable();
             $table->string('dictionary_word3')->nullable();
-     		$table->text('description')->nullable();            
+     		$table->text('description')->nullable();
      		$table->date('incident_date');
 
      		$table->string('image_url')->nullable();

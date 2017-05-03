@@ -11,6 +11,13 @@
 |
 */
 
+// CODE USED DURING DEVELOPMENT (WHAT FOOBOOKS CALLS 'PRACTICE'):
+// MAKE SURE TO SAVE DevelopmentController.php to your tutorial files before
+// deleting it when you submit A4! 
+Route::get('/dev1', 'DevelopmentController@dev1');
+Route::get('/dev2', 'DevelopmentController@dev2');
+
+
 /**
 * GET
 * /

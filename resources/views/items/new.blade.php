@@ -18,15 +18,18 @@
 
             <small>* Required fields</small><br><br>
 
-            <label for='title'>* Summary</label>
+            <label for='summary'>* Summary</label>
             <input type='text' name='summary' id='summary' value='{{ old('summary', 'Random, or Not?') }}'><br><br>
 
-            <label for='published'>* Date of Incident</label>
+            <label for='incident_date'>* Date of Incident</label>
             <input type='text' name='incident_date' id='incident_date' value='{{ old('incident_date', '2017-01-01') }}'><br><br>
 
-            <label for='type'>Dictionary, if any:</label>
+            <label for='dictionary_id'>Dictionary, if any:</label>
             <select id='dictionary_id' name='dictionary_id'>
                 <option value='0'>Choose</option>
+                <!-- see lecture 13, part 3 minute 9 re pre-filling the dropdown on the 'EDIT' page
+                (not this 'NEW' page) with whatever the current value for dictionary is
+                -->
                 @foreach($dictionaryList as $dictionary_id => $unique_nickname)
                     <option value='{{ $dictionary_id }}'>
                         {{ $unique_nickname }}
