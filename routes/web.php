@@ -11,17 +11,25 @@
 |
 */
 
-/*
-Route::get('/', function() {
-  return ('Welcome to Assignment 4');
-});*/
-
 /**
 * GET
 * /
 */
 Route::get('/', 'ItemController@index');
 
+/**
+* GET
+* /new
+*/
+Route::get('/new', 'ItemController@createNewItem');
+
+/**
+* POST
+* /new
+*/
+Route::post('/new', function() {
+  return ('Form to add new item submitted.');
+});
 
 // Temporarily added this debug route which is from around Lecture 10:
 Route::get('/debug', function() {

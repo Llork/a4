@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @push('head')
-
 @endpush
 
 @section('title')

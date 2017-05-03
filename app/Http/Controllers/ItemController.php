@@ -18,12 +18,20 @@ class ItemController extends Controller
         return view('items.index')->with([
             'items' => $items,
         ]);
-
-    /*  $result = Item::all();
-        dump($result->toArray());
-
-        return ('Welcome to ItemController.php and Assignment 4');*/
-
     } // end of index function
+
+
+    /**
+    * GET
+    * /new
+    * Add a new item
+    */
+    public function createNewItem(Request $request) {
+        $dictionaryList = Dictionary::getDictionaryList();
+        return view('items.new')->with([
+            'dictionaryList' => $dictionaryList
+        ]);
+    }
+
 
 }
