@@ -7,7 +7,7 @@ body {
     background-color:#ffffff;
     border:1px solid #000000;
     margin:30px auto;
-    padding:15px;
+    padding:30px;
     width:70%;
 }
 
@@ -15,14 +15,52 @@ img#logo {
     width:250px;
 }
 
-p.incident-date {    
+.incident-image {
+    float:right;
+    margin: 0px 0px 0px 20px;
+    width:200px;
+ }
+
+p.incident-date {
     color:#999999;
+    font-family:Verdana, Geneva, sans-serif;
     font-style:italic;
     margin:0;
+    padding:0;
+}
+
+h1.incidents-header {
+    font-family:'Arial Black', Gadget, sans-serif;
+    font-size:32px;
+    margin:0px 0px 5px 0px;
+    padding:0;
+}
+
+p {
+    text-align:justify;
+}
+
+p.incidents-intro {
+    color:#8f2222;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:16px;
+    font-style:italic;
+    line-height:20px;
+    margin:0px 0px 15px 0px;
     padding:0;
 }
 
 h3.incident-summary {
     margin:0;
     padding:0;
+}
+
+.spacer {
+clear:both;
+line-height:1px;
+}
+
+.spacer40 {
+clear:both;
+line-height:40px;
 }
