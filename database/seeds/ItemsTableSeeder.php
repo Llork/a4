@@ -16,7 +16,7 @@ class ItemsTableSeeder extends Seeder
              'created_at' => Carbon\Carbon::now()->toDateTimeString(),
              'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
              'type' => 'general',
-             'summary' => 'Franklin Pierce Coin and Final Jeopardy Correct Response',
+             'summary' => 'Franklin Pierce',
              'dictionary_word1' => null,
              'dictionary_word2' => null,
              'dictionary_word3' => null,

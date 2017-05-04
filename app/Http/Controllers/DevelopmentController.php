@@ -10,6 +10,29 @@ use App\Item;
 
 class DevelopmentController extends Controller
 {
+
+    public function dev4() {
+        # show topics for all items, using eager loading:
+        $items = Item::with('topics')->get();
+        foreach($items as $item) {
+            dump($item->summary.' is tagged with: ');
+            foreach($item->topics as $topic) {
+                dump($topic->topic_name.' ');
+            } // end of inner foreach
+        } // end of outer foreach
+    } // end of function
+
+
+    public function dev3() {
+        # show topics for specified item:
+        $item = Item::where('summary','=','Franklin Pierce')->first();
+        dump($item->summary.' is tagged with: ');
+        foreach($item->topics as $topic) {
+            dump($topic->topic_name);
+        }
+    } // end of function dev3
+
+
     public function dev2() {
 
         # Eager load the dictionary with the item ('with' is the keyword causing eager loading):

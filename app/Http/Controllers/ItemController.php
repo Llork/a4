@@ -32,6 +32,6 @@ class ItemController extends Controller
             'dictionaryList' => $dictionaryList
         ]);
     }
-
+ 
 
 }
