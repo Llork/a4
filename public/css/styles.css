@@ -19,6 +19,11 @@ img#logo {
     width:250px;
 }
 
+.error-message {
+    color:#ff0000;
+    font-weight:bold;
+}
+
 .incident-date {
     color:#999;
     font-family:Verdana, Geneva, sans-serif;

@@ -40,28 +40,25 @@ class ItemController extends Controller
     */
     public function saveNewItem(Request $request) {
 
-        // instantiate a new object from the Item class:
-        $newItem = new Item();
-        $newItem->type = 'general';
-        $newItem->summary = 'insert test 02';
-        $newItem->incident_date = '2014/05/06';
-
-        # Invoke the Eloquent `save` method to generate a new row in the
-        # `books` table, with the above data
-        #this is also known as 'persisting' the data to the database
-        $newItem->save();
-/*
-        dump($request->all());
-
+        // validate the request.  To prevent empty image_url and more_info_link
+        // fields from causing validation errors, I had to include 'nullable':
         $this->validate($request, [
             'summary' => 'required',
             'incident_date' => 'required|date',
-            'image_url' => 'url',
-            'more_info_link' => 'url'
+            'image_url' => 'nullable|url',
+            'more_info_link' => 'nullable|url'
         ]);
-*/
-        //return 'now in post version of createNewItem';
 
+        // instantiate a new object from the Item class:
+        $newItem = new Item();
+
+        // assign form (request) data to the new object:
+        $newItem->type = $request->type;
+        $newItem->summary = $request->summary;
+        $newItem->incident_date = $request->incident_date;
+
+        // save the data to the items table:
+        $newItem->save();
     }
 
 
