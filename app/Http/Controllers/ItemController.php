@@ -32,6 +32,44 @@ class ItemController extends Controller
             'dictionaryList' => $dictionaryList
         ]);
     }
- 
+
+    /**
+    * POST
+    * /new
+    * Add a new item
+    */
+    public function saveNewItem(Request $request) {
+
+        // instantiate a new object from the Item class:
+        $newItem = new Item();
+        $newItem->type = 'general';
+        $newItem->summary = 'insert test 02';
+        $newItem->incident_date = '2014/05/06';
+
+        # Invoke the Eloquent `save` method to generate a new row in the
+        # `books` table, with the above data
+        #this is also known as 'persisting' the data to the database
+        $newItem->save();
+/*
+        dump($request->all());
+
+        $this->validate($request, [
+            'summary' => 'required',
+            'incident_date' => 'required|date',
+            'image_url' => 'url',
+            'more_info_link' => 'url'
+        ]);
+*/
+        //return 'now in post version of createNewItem';
+
+    }
+
+
+
+
+
+
+
+
 
 }

@@ -36,9 +36,7 @@ Route::get('/new', 'ItemController@createNewItem');
 * POST
 * /new
 */
-Route::post('/new', function() {
-  return ('Form to add new item submitted.');
-});
+Route::post('/new', 'ItemController@saveNewItem');
 
 // Temporarily added this debug route which is from around Lecture 10:
 Route::get('/debug', function() {

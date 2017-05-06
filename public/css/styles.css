@@ -11,6 +11,10 @@ body {
     width:70%;
 }
 
+#description {
+    width:100%;
+}
+
 img#logo {
     width:250px;
 }
@@ -79,4 +83,8 @@ line-height:10px;
 .spacer40 {
 clear:both;
 line-height:40px;
+}
+
+#summary {
+    width:100%;
 }
