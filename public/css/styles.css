@@ -15,32 +15,38 @@ img#logo {
     width:250px;
 }
 
+.incident-date {
+    color:#999;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:80%;
+    font-style:italic;
+    margin:0px 0px 10px 0px;
+    padding:0;
+}
+
 .incident-image {
     float:right;
     margin: 0px 0px 0px 20px;
     width:200px;
- }
-
-p.incident-date {
-    color:#999999;
-    font-family:Verdana, Geneva, sans-serif;
-    font-style:italic;
-    margin:0;
-    padding:0;
 }
 
-h1.incidents-header {
+.incident-more-info {
+    color:#999;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:80%;
+    margin:0;
+    padding:0;
+    text-transform:uppercase;
+}
+
+.incidents-header {
     font-family:'Arial Black', Gadget, sans-serif;
     font-size:32px;
     margin:0px 0px 5px 0px;
     padding:0;
 }
 
-p {
-    text-align:justify;
-}
-
-p.incidents-intro {
+.incidents-intro {
     color:#8f2222;
     font-family:Verdana, Geneva, sans-serif;
     font-size:16px;
@@ -48,6 +54,11 @@ p.incidents-intro {
     line-height:20px;
     margin:0px 0px 15px 0px;
     padding:0;
+}
+
+p { margin:0;
+    padding:0;
+    text-align:justify;
 }
 
 h3.incident-summary {
@@ -58,6 +69,11 @@ h3.incident-summary {
 .spacer {
 clear:both;
 line-height:1px;
+}
+
+.spacer10 {
+clear:both;
+line-height:10px;
 }
 
 .spacer40 {

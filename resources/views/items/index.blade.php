@@ -24,8 +24,12 @@
                     <h3 class='incident-summary'>{{ $item->summary }}</h3>
                     <p class='incident-date'>{{ $item->incident_date }}</p>
                     <p>{{ $item->description }}</p>
-                    <div class="spacer">&#160;</div>
+                    @if(isset($item->more_info_link))
+                        <p><span class='incident-more-info'>Related:</span> <a target='_blank' href='{{$item->more_info_link}}'>{{$item->more_info_link}}</a></p>
+                    @endif
+                    <div class="spacer10">&#160;</div>
                     <hr>
+                    <div class="spacer10">&#160;</div>
                 </div>
             @endforeach
         @endif
