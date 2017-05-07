@@ -15,7 +15,7 @@ class DictionaryController extends Controller
     * retrieve all rows from the dictionaries table
 	*/
 
-    /*
+    /* IGNORE THIS FOR NOW - IT'S COMMENTED OUT AND UNDER CONSTRUCTION...
     public function index() {
 
         $dictionaries = Dictionary::orderBy('unique_nickname')->get(); # Database query

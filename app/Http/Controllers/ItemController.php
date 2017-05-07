@@ -50,7 +50,8 @@ class ItemController extends Controller
             'summary' => 'required',
             'incident_date' => 'required|date',
             'image_url' => 'nullable|url',
-            'more_info_link' => 'nullable|url'
+            'more_info_link' => 'nullable|url',
+            'dictionary_id' => 'required'
         ]);
 
         // instantiate a new object from the Item class:

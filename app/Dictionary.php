@@ -20,7 +20,7 @@ class Dictionary extends Model
 	*/
     public static function getDictionaryList() {
         # Get the dictionaries for use in dropdown menus
-        $dictionaries = Dictionary::orderBy('unique_nickname', 'ASC')->get();
+        $dictionaries = Dictionary::orderBy('id', 'ASC')->get();
         # Put dictionaries into array where the key = dictionary id and value = unique nickname
         $dictionaryList = [];
         foreach($dictionaries as $dictionary) {

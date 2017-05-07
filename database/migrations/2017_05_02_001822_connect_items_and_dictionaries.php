@@ -18,7 +18,7 @@ class ConnectItemsAndDictionaries extends Migration
             #$table->dropColumn('dictionary');
 
             # Add a new INT field 'dictionary_id' that has to be unsigned (positive)
-            $table->integer('dictionary_id')->unsigned()->nullable();
+            $table->integer('dictionary_id')->unsigned();
 
             # 'dictionary_id' foreign key connects to 'id' field in 'dictionaries' table
             $table->foreign('dictionary_id')->references('id')->on('dictionaries');
