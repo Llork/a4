@@ -15,6 +15,10 @@ class ItemController extends Controller
     * retrieve all rows from the items table
 	*/
     public function index() {
+        $dictionaryList = Dictionary::getDictionaryList();
+
+        // dump($dictionaryList);
+
         $items = Item::orderBy('summary')->get(); # Database query
         return view('items.index')->with([
             'items' => $items,
@@ -69,6 +73,7 @@ class ItemController extends Controller
         $newItem->incident_date = $request->incident_date;
         $newItem->image_url = $request->image_url;
         $newItem->more_info_link = $request->more_info_link;
+        $newItem->dictionary_id = $request->dictionary_id;
 
         // save the data to the items table:
         $newItem->save();

@@ -66,7 +66,7 @@ class DictionariesTableSeeder extends Seeder
            Dictionary::insert([
                 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-                'unique_nickname' => 'this truly can fit in a pocket',
+                'unique_nickname' => 'my only pocket size dictionary',
                 'title' => 'Webster’s New Pocket Dictionary',
                 'year_published' => '2000',
                 'year_acquired' => 'circa 2005',
