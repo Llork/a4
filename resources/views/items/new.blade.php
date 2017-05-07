@@ -47,7 +47,7 @@
             <input type='text' name='dictionary_word3' id='dictionary_word3' value='{{ old('dictionary_word3') }}'><br><br>
 
             <label for='description'>Description:</label>
-            <textarea id='description' name='description' rows='5'>
+            <textarea class="text-area" id='description' name='description' rows='5'>
             </textarea><br><br>
 
             <label for='image_url'>Image URL:</label>

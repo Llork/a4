@@ -11,7 +11,7 @@ body {
     width:70%;
 }
 
-#description {
+.text-area {
     width:100%;
 }
 
@@ -67,7 +67,7 @@ img#logo {
 .incidents-header {
     font-family:'Arial Black', Gadget, sans-serif;
     font-size:32px;
-    margin:0px 0px 5px 0px;
+    margin:0px 0px 25px 0px;
     padding:0;
 }
 

@@ -25,4 +25,68 @@ class DictionaryController extends Controller
     } // end of dictionaries function
 
 
+    /**
+    * GET
+    * /new_dictionary
+    * Add a new dictionary
+    */
+    public function createNewDictionary(Request $request) {
+        $now = \Carbon\Carbon::now()->toDateTimeString();
+        return view('dictionaries.newdictionary')->with([
+            'now' => $now
+        ]);
+    } // end of createNewDictionary function
+
+    /**
+    * POST
+    * /new_dictionary
+    * Add a new dictionary
+    */
+    public function saveNewDictionary(Request $request) {
+
+        $messages = [
+            'unique_nickname.unique' => 'The unique nickname of \'' . $request->unique_nickname . '\' has already been taken.',
+        ];
+
+        // validate the request.  To prevent empty image_url and more_info_link
+        // fields from causing validation errors, I had to include 'nullable':
+        $this->validate($request, [
+            'unique_nickname' => 'required|unique:dictionaries,unique_nickname',
+            'title' => 'required',
+            'image_url' => 'nullable|url',
+            'more_info_link' => 'nullable|url'
+        ], $messages);
+
+        // instantiate a new object from the Item class:
+        $newDictionary = new Dictionary();
+
+        // dump($newDictionary);
+        //dump($request);
+
+        // assign form (request) data to the new object:
+        $newDictionary->unique_nickname = $request->unique_nickname;
+        $newDictionary->title = $request->title;
+        $newDictionary->year_published = $request->year_published;
+        $newDictionary->year_acquired = $request->year_acquired;
+        $newDictionary->cover_type = $request->cover_type;
+        $newDictionary->cover_color = $request->cover_color;
+        $newDictionary->pages = $request->pages;
+        $newDictionary->columns_per_page = $request->columns_per_page;
+        $newDictionary->location = $request->location;
+        $newDictionary->comments = $request->comments;
+        $newDictionary->image_url = $request->image_url;
+        $newDictionary->more_info_link = $request->more_info_link;
+
+        // save the data to the items table:
+        $newDictionary->save();
+
+        // display a message on home page that new item was added:
+        Session::flash('message', 'The dictionary \'' . $request->unique_nickname . '\' was added.');
+
+        // Redirect to the dictionaries page:
+        return redirect('/dictionaries');
+
+    } // end of saveNewDictionary function
+
+
 }

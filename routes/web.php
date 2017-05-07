@@ -41,13 +41,13 @@ Route::get('/dictionaries', 'DictionaryController@dictionaries');
 * GET
 * /new
 */
-Route::get('/dictionaries/new', 'DictionaryController@createNewDictionary');
+Route::get('/new_dictionary', 'DictionaryController@createNewDictionary');
 
 /**
 * POST
 * /new
 */
-Route::post('/dictionaries/new', 'DictionaryController@saveNewDictionary');
+Route::post('/new_dictionary', 'DictionaryController@saveNewDictionary');
 
 
 /*

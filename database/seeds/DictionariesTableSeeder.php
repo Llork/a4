@@ -49,7 +49,7 @@ class DictionariesTableSeeder extends Seeder
         Dictionary::insert([
              'created_at' => Carbon\Carbon::now()->toDateTimeString(),
              'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-             'unique_nickname' => 'my original Merriam-Webster',
+             'unique_nickname' => 'Merriam-Webster',
              'title' => 'The Merriam-Webster Dictionary, Home and Office Edition',
              'year_published' => '1998',
              'year_acquired' => 'circa 2000',
@@ -66,7 +66,7 @@ class DictionariesTableSeeder extends Seeder
          Dictionary::insert([
               'created_at' => Carbon\Carbon::now()->toDateTimeString(),
               'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-              'unique_nickname' => 'my original red American Heritage',
+              'unique_nickname' => 'My first American Heritage. Red.',
               'title' => 'The American Heritage Dictionary of the English Language',
               'year_published' => '1978',
               'year_acquired' => 'circa 1980',
@@ -100,7 +100,7 @@ class DictionariesTableSeeder extends Seeder
            Dictionary::insert([
                 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-                'unique_nickname' => 'my only pocket size dictionary',
+                'unique_nickname' => 'pocket size dictionary',
                 'title' => 'Webster’s New Pocket Dictionary',
                 'year_published' => '2000',
                 'year_acquired' => 'circa 2005',
