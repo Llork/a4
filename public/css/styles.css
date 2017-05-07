@@ -15,6 +15,14 @@ body {
     width:100%;
 }
 
+.dictionary-title {
+    color:#333;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:20px;
+    font-variant:small-caps;
+    font-weight:bold;
+}
+
 img#logo {
     width:250px;
 }

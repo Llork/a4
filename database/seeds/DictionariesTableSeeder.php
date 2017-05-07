@@ -41,7 +41,7 @@ class DictionariesTableSeeder extends Seeder
              'pages' => null,
              'columns_per_page' => null,
              'location' => null,
-             'comments' => 'Not sure what dictionary was used. Prior to 2017, it was often true that if I didn’t specify a dictionary in my journal, it meant that I used my Merriam-Webster (dictonary_id of 1 in this database).',
+             'comments' => 'Not sure what dictionary was used. Prior to 2017, it was often true that if I didn’t specify a dictionary in my journal, it meant that I used my Merriam-Webster.',
              'image_url' => null,
              'more_info_link' => null
          ]);
@@ -59,7 +59,7 @@ class DictionariesTableSeeder extends Seeder
              'columns_per_page' => 2,
              'location' => 'home',
              'comments' => null,
-             'image_url' => null,
+             'image_url' => 'images/dictionaries/Merriam_Webster.jpg',
              'more_info_link' => null
          ]);
 
@@ -93,7 +93,7 @@ class DictionariesTableSeeder extends Seeder
                'columns_per_page' => 2,
                'location' => 'home',
                'comments' => 'I inherited this dictionary when Mom passed away.',
-               'image_url' => null,
+               'image_url' => 'images/dictionaries/Mom_American_Heritage.jpg',
                'more_info_link' => null
            ]);
 

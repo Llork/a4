@@ -12,19 +12,17 @@ class DictionaryController extends Controller
     /**
 	* GET
     * /
-    * retrieve all rows from the dictionaries table
+    * retrieve all rows from the dictionaries table except for the 'none'
+    * and 'unknown' rows:
 	*/
 
-    /* IGNORE THIS FOR NOW - IT'S COMMENTED OUT AND UNDER CONSTRUCTION...
-    public function index() {
+    public function dictionaries() {
 
-        $dictionaries = Dictionary::orderBy('unique_nickname')->get(); # Database query
-        return view('dictionaries.index')->with([
+        $dictionaries = Dictionary::where('unique_nickname', '!=', 'none')->where('unique_nickname', '!=', 'unknown')->orderBy('id')->get(); # Database query
+        return view('dictionaries.dictionaries')->with([
             'dictionaries' => $dictionaries,
         ]);
-    } // end of index function
-    */
-
+    } // end of dictionaries function
 
 
 }

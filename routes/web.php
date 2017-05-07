@@ -35,7 +35,7 @@ Route::post('/new', 'ItemController@saveNewItem');
 * GET
 * /
 */
-Route::get('/dictionaries', 'DictionaryController@index');
+Route::get('/dictionaries', 'DictionaryController@dictionaries');
 
 /**
 * GET
