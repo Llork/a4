@@ -2,23 +2,9 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| ItemController Web Routes:
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
-
-// CODE USED DURING DEVELOPMENT (WHAT FOOBOOKS CALLS 'PRACTICE'):
-// MAKE SURE TO SAVE DevelopmentController.php to your tutorial files before
-// deleting it when you submit A4!
-Route::get('/dev1', 'DevelopmentController@dev1');
-Route::get('/dev2', 'DevelopmentController@dev2');
-Route::get('/dev3', 'DevelopmentController@dev3');
-Route::get('/dev4', 'DevelopmentController@dev4');
-
 
 /**
 * GET
@@ -38,7 +24,42 @@ Route::get('/new', 'ItemController@createNewItem');
 */
 Route::post('/new', 'ItemController@saveNewItem');
 
-// Temporarily added this debug route which is from around Lecture 10:
+
+/*
+|--------------------------------------------------------------------------
+| DictionaryController Web Routes:
+|--------------------------------------------------------------------------
+*/
+
+/**
+* GET
+* /
+*/
+Route::get('/dictionaries', 'DictionaryController@index');
+
+/**
+* GET
+* /new
+*/
+Route::get('/dictionaries/new', 'DictionaryController@createNewDictionary');
+
+/**
+* POST
+* /new
+*/
+Route::post('/dictionaries/new', 'DictionaryController@saveNewDictionary');
+
+
+/*
+|--------------------------------------------------------------------------
+| Development Web Routes - remove before submitting a4:
+|--------------------------------------------------------------------------
+*/
+Route::get('/dev1', 'DevelopmentController@dev1');
+Route::get('/dev2', 'DevelopmentController@dev2');
+Route::get('/dev3', 'DevelopmentController@dev3');
+Route::get('/dev4', 'DevelopmentController@dev4');
+
 Route::get('/debug', function() {
 	echo '<pre>';
 	echo '<h1>Environment</h1>';
@@ -69,8 +90,6 @@ Route::get('/debug', function() {
 });
 
 
-
-
 /**
 * Drop then create database a4
 * (only accessible locally)
@@ -84,22 +103,13 @@ if(App::environment('local')) {
 
         return 'Dropped database a4; created database a4.';
     });
-
 };
-
-
 
 
 /**
 * Log viewer
-* (only accessible locally)
+* (change this to only be accessible locally)
 */
 //if(config('app.env') == 'local') {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 //}
-
-/* commented out 4-30-2017:
-Route::get('/', function () {
-    return view('welcome');
-});
-*/

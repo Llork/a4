@@ -15,10 +15,6 @@ class ItemController extends Controller
     * retrieve all rows from the items table
 	*/
     public function index() {
-        $dictionaryList = Dictionary::getDictionaryList();
-
-        // dump($dictionaryList);
-
         $items = Item::orderBy('summary')->get(); # Database query
         return view('items.index')->with([
             'items' => $items,
@@ -38,7 +34,7 @@ class ItemController extends Controller
             'dictionaryList' => $dictionaryList,
             'now' => $now
         ]);
-    }
+    } // end of createNewItem function
 
     /**
     * POST
@@ -84,7 +80,7 @@ class ItemController extends Controller
         // Redirect to the home page:
         return redirect('/');
 
-    }
+    } // end of saveNewItem function
 
 
 
