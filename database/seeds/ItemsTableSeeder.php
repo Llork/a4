@@ -15,7 +15,6 @@ class ItemsTableSeeder extends Seeder
         Item::insert([
              'created_at' => Carbon\Carbon::now()->toDateTimeString(),
              'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-             'type' => 'general',
              'summary' => 'Franklin Pierce',
              'dictionary_word1' => null,
              'dictionary_word2' => null,
@@ -30,7 +29,6 @@ class ItemsTableSeeder extends Seeder
         Item::insert([
                'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-               'type' => 'general',
                'summary' => 'Lyons',
                'dictionary_word1' => null,
                'dictionary_word2' => null,
@@ -45,7 +43,6 @@ class ItemsTableSeeder extends Seeder
         Item::insert([
                'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-               'type' => 'general',
                'summary' => 'Everything’s Coming Up Pizza',
                'dictionary_word1' => null,
                'dictionary_word2' => null,
@@ -60,7 +57,6 @@ class ItemsTableSeeder extends Seeder
         Item::insert([
               'created_at' => Carbon\Carbon::now()->toDateTimeString(),
               'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-              'type' => 'dictionary',
               'summary' => 'Oak Tree',
               'dictionary_word1' => 'oar',
               'dictionary_word2' => 'oak',
@@ -75,7 +71,6 @@ class ItemsTableSeeder extends Seeder
         Item::insert([
                  'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                  'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-                 'type' => 'dictionary',
                  'summary' => 'Hungry Hawk',
                  'dictionary_word1' => 'gormandize',
                  'dictionary_word2' => 'ravenously',
@@ -90,7 +85,6 @@ class ItemsTableSeeder extends Seeder
         Item::insert([
                   'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                   'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-                  'type' => 'dictionary',
                   'summary' => 'Bugs and More Bugs',
                   'dictionary_word1' => 'manual',
                   'dictionary_word2' => 'mantra',
@@ -105,7 +99,6 @@ class ItemsTableSeeder extends Seeder
         Item::insert([
                    'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                    'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-                   'type' => 'dictionary',
                    'summary' => 'Big Brother',
                    'dictionary_word1' => 'kinsman',
                    'dictionary_word2' => null,
@@ -120,7 +113,6 @@ class ItemsTableSeeder extends Seeder
         Item::insert([
                     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-                    'type' => 'dictionary',
                     'summary' => 'Losing a Pet',
                     'dictionary_word1' => 'palm civet',
                     'dictionary_word2' => null,

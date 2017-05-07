@@ -24,8 +24,7 @@ class CreateItemsTable extends Migration
      		# you can know when a given row was created and last modified:
      		$table->timestamps();
 
-     		# Build the remaining columns:
-     		$table->string('type');
+     		# Build the remaining columns:     		
             $table->string('summary');
             $table->string('dictionary_word1')->nullable();
             $table->string('dictionary_word2')->nullable();

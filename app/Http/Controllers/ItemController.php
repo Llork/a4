@@ -46,7 +46,6 @@ class ItemController extends Controller
         // validate the request.  To prevent empty image_url and more_info_link
         // fields from causing validation errors, I had to include 'nullable':
         $this->validate($request, [
-            'type' => 'required',
             'summary' => 'required',
             'incident_date' => 'required|date',
             'image_url' => 'nullable|url',
@@ -60,8 +59,7 @@ class ItemController extends Controller
         // dump($newItem);
         //dump($request);
 
-        // assign form (request) data to the new object:
-        $newItem->type = $request->type;
+        // assign form (request) data to the new object:        
         $newItem->summary = $request->summary;
         $newItem->dictionary_word1 = $request->dictionary_word1;
         $newItem->dictionary_word2 = $request->dictionary_word2;
