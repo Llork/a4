@@ -20,16 +20,16 @@
             <small>* Required fields</small><br><br>
 
             <label for='summary'>* Summary:</label>
-            <input type='text' name='summary' id='summary' value='{{ old('summary', 'Random, or Not?') }}'><br><br>
+            <input type='text' name='summary' id='summary' value='{{ old('summary', $now) }}'><br><br>
 
             <label for='incident_date'>* Date of Incident:</label>
             <input type='text' name='incident_date' id='incident_date' value='{{ old('incident_date', '2017-01-01') }}'><br><br>
 
             <label for='type'>Incident Type:</label>
             <select id='type' name='type'>
-                <option value='0'>Choose</option>
-                <option value='1'>General</option>
-                <option value='2'>Dictionary</option>
+                <option value='none'>Choose</option>
+                <option value='general'>General</option>
+                <option value='dictionary'>Dictionary</option>
             </select><br><br>
 
             <label for='dictionary_id'>Dictionary, if any:</label>
@@ -45,6 +45,15 @@
                 @endforeach
             </select><br><br>
 
+            <label for='dictionary_word1'>Main Dictionary Word, if any:</label>
+            <input type='text' name='dictionary_word1' id='dictionary_word1' value='{{ old('dictionary_word1') }}'><br><br>
+
+            <label for='dictionary_word2'>Second Dictionary Word, if any:</label>
+            <input type='text' name='dictionary_word2' id='dictionary_word2' value='{{ old('dictionary_word2') }}'><br><br>
+
+            <label for='dictionary_word3'>Third Dictionary Word, if any:</label>
+            <input type='text' name='dictionary_word3' id='dictionary_word3' value='{{ old('dictionary_word3') }}'><br><br>
+
             <label for='description'>Description:</label>
             <textarea id='description' name='description' rows='5'>
             </textarea><br><br>
@@ -59,7 +68,7 @@
             @include('errors')
 
             <input type='submit' value='Add new item'>
-        </form>       
+        </form>
 
 
     </section>

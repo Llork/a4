@@ -22,11 +22,12 @@
                         <img class="incident-image" src='{{$item->image_url}}'>
                     @endif
                     <h3 class='incident-summary'>{{ $item->summary }}</h3>
-                    <p class='incident-date'>{{ $item->incident_date }}</p>
+                    <p class='incident-date'>{{ $item->incident_date }} {{ $item->type }}</p>
                     <p>{{ $item->description }}</p>
                     @if(isset($item->more_info_link))
                         <p><span class='incident-more-info'>Related:</span> <a target='_blank' href='{{$item->more_info_link}}'>{{$item->more_info_link}}</a></p>
-                    @endif
+                    @endif                    
+
                     <div class="spacer10">&#160;</div>
                     <hr>
                     <div class="spacer10">&#160;</div>

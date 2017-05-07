@@ -28,8 +28,10 @@ class ItemController extends Controller
     */
     public function createNewItem(Request $request) {
         $dictionaryList = Dictionary::getDictionaryList();
+        $now = \Carbon\Carbon::now()->toDateTimeString();
         return view('items.new')->with([
-            'dictionaryList' => $dictionaryList
+            'dictionaryList' => $dictionaryList,
+            'now' => $now
         ]);
     }
 
@@ -43,6 +45,7 @@ class ItemController extends Controller
         // validate the request.  To prevent empty image_url and more_info_link
         // fields from causing validation errors, I had to include 'nullable':
         $this->validate($request, [
+            'type' => 'required',
             'summary' => 'required',
             'incident_date' => 'required|date',
             'image_url' => 'nullable|url',
@@ -52,13 +55,23 @@ class ItemController extends Controller
         // instantiate a new object from the Item class:
         $newItem = new Item();
 
+        // dump($newItem);
+        //dump($request);
+
         // assign form (request) data to the new object:
         $newItem->type = $request->type;
         $newItem->summary = $request->summary;
+        $newItem->dictionary_word1 = $request->dictionary_word1;
+        $newItem->dictionary_word2 = $request->dictionary_word2;
+        $newItem->dictionary_word3 = $request->dictionary_word3;
+        $newItem->description = $request->description;
         $newItem->incident_date = $request->incident_date;
+        $newItem->image_url = $request->image_url;
+        $newItem->more_info_link = $request->more_info_link;
 
         // save the data to the items table:
         $newItem->save();
+
     }
 
 
