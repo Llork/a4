@@ -59,7 +59,7 @@
             {{-- Extracted error code to its own view file --}}
             @include('errors')
 
-            <input type='submit' value='Add new item'>
+            <input type='submit' value='Add new Synchronicity'>
         </form>
 
 

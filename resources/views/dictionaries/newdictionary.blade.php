@@ -57,7 +57,7 @@
             {{-- Extracted error code to its own view file --}}
             @include('errors')
 
-            <input type='submit' value='Add new dictionary'>
+            <input type='submit' value='Add new Dictionary'>
         </form>
 
 

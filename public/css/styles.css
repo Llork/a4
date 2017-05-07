@@ -1,4 +1,14 @@
 
+a.nav:link, a.nav:visited {
+    color:#fff;
+    font-family:Verdana, Geneva, sans-serif;
+}
+
+a.nav:hover, a.nav:active {
+    color:#ddd;
+    font-family:Verdana, Geneva, sans-serif;
+}
+
 body {
     background-color:#ee3839;
 }
@@ -89,6 +99,10 @@ p { margin:0;
 h3.incident-summary {
     margin:0;
     padding:0;
+}
+
+nav {
+    color:#fff;
 }
 
 .spacer {
