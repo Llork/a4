@@ -10,13 +10,10 @@
 </head>
 <body>
     <div id='content'>
-        @if(Session::get('message') != null)
-            <div class='message'>{{ Session::get('message') }}</div>
-        @endif
         <header>
             <a href='/'><img id="logo" src='/images/design15_logo.png' alt='Design15 logo'></a>
         </header>
-        <section>
+        <section>            
             @yield('content')
         </section>
         <footer>

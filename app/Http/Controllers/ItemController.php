@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Dictionary;
 use App\Item;
+use Session;
 
 class ItemController extends Controller
 {
@@ -71,6 +72,12 @@ class ItemController extends Controller
 
         // save the data to the items table:
         $newItem->save();
+
+        // display a message on home page that new item was added:
+        Session::flash('message', 'The item \'' . $request->summary . '\' was added.');
+
+        // Redirect to the home page:
+        return redirect('/');
 
     }
 

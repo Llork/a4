@@ -24,6 +24,14 @@ img#logo {
     font-weight:bold;
 }
 
+.flash-message {
+    background-color:#67DB7F;
+    color:#fff;
+    font-family:Verdana, Geneva, sans-serif;
+    font-weight:bold;
+    padding:10px;
+}
+
 .incident-date {
     color:#999;
     font-family:Verdana, Geneva, sans-serif;
