@@ -91,6 +91,14 @@ img#logo {
     padding:0;
 }
 
+input {
+    font-size:12px;
+}
+
+input.wide {
+    width:100%;
+}
+
 p { margin:0;
     padding:0;
     text-align:justify;
@@ -122,4 +130,8 @@ line-height:40px;
 
 #summary {
     width:100%;
+}
+
+textarea {
+    font-size:12px;
 }

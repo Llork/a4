@@ -11,6 +11,9 @@
 
 @section('content')
     <section id='items' class='container'>
+        @if(Session::get('message') != null)
+            <div class='flash-message'>{{ Session::get('message') }}</div>
+        @endif
         <h1 class="incidents-header">Add a new dictionary</h1>
 
         <form method='POST' action='/new_dictionary'>
@@ -49,10 +52,10 @@
             </textarea><br><br>
 
             <label for='image_url'>Image URL:</label>
-            <input type='text' name='image_url' id='image_url' value='{{ old('image_url') }}'><br><br>
+            <input class='wide' type='text' name='image_url' id='image_url' value='{{ old('image_url') }}'><br><br>
 
             <label for='more_info_link'>'More information' Link:</label>
-            <input type='text' name='more_info_link' id='more_info_link' value='{{ old('more_info_link') }}'><br><br>
+            <input class='wide' type='text' name='more_info_link' id='more_info_link' value='{{ old('more_info_link') }}'><br><br>
 
             {{-- Extracted error code to its own view file --}}
             @include('errors')

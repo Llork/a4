@@ -5,7 +5,7 @@
         @yield('title', 'Design15')
     </title>
     <meta charset='utf-8'>
-    <link href="css/styles.css" type='text/css' rel='stylesheet'>
+    <link href="/css/styles.css" type='text/css' rel='stylesheet'>
     @stack('head')
 </head>
 <body>

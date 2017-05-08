@@ -14,7 +14,6 @@
         @endif
         <h1 class="incidents-header">Dictionaries</h1>
         <p class="incidents-intro">Here is a partial listing of my dictionaries.</p>
-        <p><a href="/">&laquo; Return to home page</a></p>
         <div class="spacer40">&#160;</div>
         @if(count($dictionaries) == 0)
             No data found.

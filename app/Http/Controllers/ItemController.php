@@ -48,7 +48,7 @@ class ItemController extends Controller
         $this->validate($request, [
             'summary' => 'required',
             'incident_date' => 'required|date',
-            'image_url' => 'nullable|url',
+            //'image_url' => 'nullable|url',
             'more_info_link' => 'nullable|url',
             'dictionary_id' => 'required'
         ]);
@@ -59,7 +59,7 @@ class ItemController extends Controller
         // dump($newItem);
         //dump($request);
 
-        // assign form (request) data to the new object:        
+        // assign form (request) data to the new object:
         $newItem->summary = $request->summary;
         $newItem->dictionary_word1 = $request->dictionary_word1;
         $newItem->dictionary_word2 = $request->dictionary_word2;
@@ -82,7 +82,72 @@ class ItemController extends Controller
     } // end of saveNewItem function
 
 
+    /**
+    * GET
+    * /edit/{id}
+    * Edit an item
+    */
+    //public function editItem(Request $request) {
+    public function editItem($id) {
 
+        $item = Item::find($id);
+
+        if(is_null($item)) {
+            Session::flash('message', 'The synchronicity that you requested was not found.');
+            return redirect('/');
+        }
+
+        $dictionaryList = Dictionary::getDictionaryList();
+        $now = \Carbon\Carbon::now()->toDateTimeString();
+        return view('items.edit')->with([
+            'dictionaryList' => $dictionaryList,
+            'now' => $now,
+            'id' => $id,
+            'item' => $item
+        ]);
+
+    } // end of editItem function
+
+
+    /**
+    * POST
+    * /edit
+    * Edit an item
+    */
+    public function saveItemEdits(Request $request) {
+
+        // validate the request.  To prevent empty image_url and more_info_link
+        // fields from causing validation errors, I had to include 'nullable':
+        $this->validate($request, [
+            'summary' => 'required',
+            'incident_date' => 'required|date',
+            //'image_url' => 'nullable|url',
+            'more_info_link' => 'nullable|url',
+            'dictionary_id' => 'required'
+        ]);
+
+        $existingItem = Item::find($request->id);
+
+        // assign form (request) data to the existing item:
+        $existingItem->summary = $request->summary;
+        $existingItem->dictionary_word1 = $request->dictionary_word1;
+        $existingItem->dictionary_word2 = $request->dictionary_word2;
+        $existingItem->dictionary_word3 = $request->dictionary_word3;
+        $existingItem->description = $request->description;
+        $existingItem->incident_date = $request->incident_date;
+        $existingItem->image_url = $request->image_url;
+        $existingItem->more_info_link = $request->more_info_link;
+        $existingItem->dictionary_id = $request->dictionary_id;
+
+        // save the data to the items table:
+        $existingItem->save();
+
+        // Redirect to the same edit page in case they want to do more editing of the item,
+        // and include a flash message that update took place:        
+        Session::flash('message', 'The item \'' . $request->summary . '\' was changed.');
+        return redirect('/edit/'.$request->id);
+
+    } // end of saveItemEdits function
 
 
 

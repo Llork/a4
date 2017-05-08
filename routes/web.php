@@ -6,23 +6,13 @@
 |--------------------------------------------------------------------------
 */
 
-/**
-* GET
-* /
-*/
 Route::get('/', 'ItemController@index');
 
-/**
-* GET
-* /new
-*/
 Route::get('/new', 'ItemController@createNewItem');
-
-/**
-* POST
-* /new
-*/
 Route::post('/new', 'ItemController@saveNewItem');
+
+Route::get('/edit/{id}', 'ItemController@editItem');
+Route::post('/edit', 'ItemController@saveItemEdits');
 
 
 /*
