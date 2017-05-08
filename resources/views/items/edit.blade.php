@@ -33,11 +33,10 @@
 
             <label for='dictionary_id'>* Dictionary (choose 'none' if no dictionary used):</label>
             <select id='dictionary_id' name='dictionary_id'>
-                <!-- see lecture 13, part 3 minute 9 re pre-filling the dropdown on the 'EDIT' page
-                (not this 'NEW' page) with whatever the current value for dictionary is
-                -->
+                <!-- Credit to DWA-15 lecture 13, part 3 minute 8 on how to pre-select the dropdown
+                with current value for dictionary -->
                 @foreach($dictionaryList as $dictionary_id => $unique_nickname)
-                    <option value='{{ $dictionary_id }}'>
+                    <option value='{{ $dictionary_id }}' {{ ($item->dictionary_id == $dictionary_id) ? 'SELECTED' : '' }}>
                         {{ $unique_nickname }}
                     </option>
                 @endforeach

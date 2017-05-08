@@ -29,10 +29,7 @@
             <input type='text' name='incident_date' id='incident_date' value='{{ old('incident_date', '2017-01-01') }}'><br><br>
 
             <label for='dictionary_id'>* Dictionary (choose 'none' if no dictionary used):</label>
-            <select id='dictionary_id' name='dictionary_id'>
-                <!-- see lecture 13, part 3 minute 9 re pre-filling the dropdown on the 'EDIT' page
-                (not this 'NEW' page) with whatever the current value for dictionary is
-                -->
+            <select id='dictionary_id' name='dictionary_id'>                
                 @foreach($dictionaryList as $dictionary_id => $unique_nickname)
                     <option value='{{ $dictionary_id }}'>
                         {{ $unique_nickname }}
