@@ -48,6 +48,7 @@ class ItemController extends Controller
         $this->validate($request, [
             'summary' => 'required',
             'incident_date' => 'required|date',
+            //commnted out because it won't let me have relative image urls:
             //'image_url' => 'nullable|url',
             'more_info_link' => 'nullable|url',
             'dictionary_id' => 'required'
@@ -87,7 +88,6 @@ class ItemController extends Controller
     * /edit/{id}
     * Edit an item
     */
-    //public function editItem(Request $request) {
     public function editItem($id) {
 
         $item = Item::find($id);
@@ -121,11 +121,13 @@ class ItemController extends Controller
         $this->validate($request, [
             'summary' => 'required',
             'incident_date' => 'required|date',
+            //commnted out because it won't let me have relative image urls:
             //'image_url' => 'nullable|url',
             'more_info_link' => 'nullable|url',
             'dictionary_id' => 'required'
         ]);
 
+        // Get existing item from the database:
         $existingItem = Item::find($request->id);
 
         // assign form (request) data to the existing item:
@@ -143,7 +145,7 @@ class ItemController extends Controller
         $existingItem->save();
 
         // Redirect to the same edit page in case they want to do more editing of the item,
-        // and include a flash message that update took place:        
+        // and include a flash message that update took place:
         Session::flash('message', 'The item \'' . $request->summary . '\' was changed.');
         return redirect('/edit/'.$request->id);
 

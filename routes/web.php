@@ -21,23 +21,13 @@ Route::post('/edit', 'ItemController@saveItemEdits');
 |--------------------------------------------------------------------------
 */
 
-/**
-* GET
-* /
-*/
 Route::get('/dictionaries', 'DictionaryController@dictionaries');
 
-/**
-* GET
-* /new
-*/
 Route::get('/new_dictionary', 'DictionaryController@createNewDictionary');
-
-/**
-* POST
-* /new
-*/
 Route::post('/new_dictionary', 'DictionaryController@saveNewDictionary');
+
+Route::get('/edit_dictionary/{id}', 'DictionaryController@editDictionary');
+Route::post('/edit_dictionary', 'DictionaryController@saveDictionaryEdits');
 
 
 /*

@@ -10,7 +10,7 @@
 
 
 @section('content')
-    <section id='items' class='container'>
+    <section id='dictionaries' class='container'>
         @if(Session::get('message') != null)
             <div class='flash-message'>{{ Session::get('message') }}</div>
         @endif
@@ -21,10 +21,10 @@
             {{ csrf_field() }}
 
             <label for='unique_nickname'>Nickname (required, can't already be in use):</label>
-            <input type='text' name='unique_nickname' id='unique_nickname' value='{{ old('unique_nickname') }}'><br><br>
+            <input class='wide' type='text' name='unique_nickname' id='unique_nickname' value='{{ old('unique_nickname') }}'><br><br>
 
             <label for='title'>Title (required):</label>
-            <input type='text' name='title' id='title' value='{{ old('title') }}'><br><br>
+            <input class='wide' type='text' name='title' id='title' value='{{ old('title') }}'><br><br>
 
             <label for='year_published'>Year Published:</label>
             <input type='text' name='year_published' id='year_published' value='{{ old('year_published') }}'><br><br>

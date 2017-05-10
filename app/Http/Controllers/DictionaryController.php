@@ -89,4 +89,83 @@ class DictionaryController extends Controller
     } // end of saveNewDictionary function
 
 
+    /**
+    * GET
+    * /edit_dictionary/{id}
+    * Edit a dictionary
+    */
+    public function editDictionary($id) {
+
+        $dictionary = Dictionary::find($id);
+
+        if(is_null($dictionary)) {
+            Session::flash('message', 'The dictionary that you requested was not found.');
+            return redirect('/dictionaries');
+        }
+
+        $now = \Carbon\Carbon::now()->toDateTimeString();
+        return view('dictionaries.editdictionary')->with([
+            'now' => $now,
+            'id' => $id,
+            'dictionary' => $dictionary
+        ]);
+
+    } // end of editDictionary function
+
+
+    /**
+    * POST
+    * /edit
+    * Edit a dictionary
+    */
+    public function saveDictionaryEdits(Request $request) {
+
+        //return 'now in the post function saveDictionaryEdits';
+
+        $messages = [
+            'unique_nickname.unique' => 'The unique nickname of \'' . $request->unique_nickname . '\' has already been taken.',
+        ];
+
+        // validate the request.  To prevent empty image_url and more_info_link
+        // fields from causing validation errors, I had to include 'nullable':
+        $this->validate($request, [
+            'unique_nickname' => 'required|unique:dictionaries,unique_nickname',
+            'title' => 'required',
+            //commnted out because it won't let me have relative image urls:
+            //'image_url' => 'nullable|url',
+            'more_info_link' => 'nullable|url'
+        ], $messages);
+
+        // get the existing dictionary from the database:
+        $existingDictionary = Dictionary::find($request->id);
+
+        // dump($existingDictionary);
+        //dump($request);
+
+        // assign form (request) data to the existing dictionary:
+        $existingDictionary->unique_nickname = $request->unique_nickname;
+        $existingDictionary->title = $request->title;
+        $existingDictionary->year_published = $request->year_published;
+        $existingDictionary->year_acquired = $request->year_acquired;
+        $existingDictionary->cover_type = $request->cover_type;
+        $existingDictionary->cover_color = $request->cover_color;
+        $existingDictionary->pages = $request->pages;
+        $existingDictionary->columns_per_page = $request->columns_per_page;
+        $existingDictionary->location = $request->location;
+        $existingDictionary->comments = $request->comments;
+        $existingDictionary->image_url = $request->image_url;
+        $existingDictionary->more_info_link = $request->more_info_link;
+
+        // save the data to the dictionaries table:
+        $existingDictionary->save();
+
+        // Redirect to the same edit page in case they want to do more editing of the dictionary,
+        // and include a flash message that update took place:
+        Session::flash('message', 'The dictionary \'' . $request->unique_nickname . '\' was changed.');
+        return redirect('/edit_dictionary/'.$request->id);
+
+
+    } // end of editDictionary function
+
+
 }
