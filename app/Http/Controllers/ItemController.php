@@ -22,7 +22,26 @@ class ItemController extends Controller
         return view('items.index')->with([
             'items' => $items,
         ]);
-    
+
+    } // end of index function
+
+
+    /**
+	* GET
+    * /
+    * retrieve only those rows from the items table which mention the specified dictionary
+	*/
+    public function itemsForDictionary($id) {
+        // $items = Item::where('dictionary_id', '=', $id)->get()->orderBy('summary'); # Database query
+        $items = Item::where('dictionary_id', '=', $id)->get(); # Database query
+        $dictionary = Dictionary::find($id);
+        //dump($items);
+
+        return view('items.itemsfordictionary')->with([
+            'dictionary' => $dictionary,
+            'items' => $items
+        ]);
+
     } // end of index function
 
 

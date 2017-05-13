@@ -25,7 +25,7 @@
 
             <input type='hidden' name='id' value='{{ $dictionary->id }}'?>
 
-            <h2>You would like to delete <em>'{{ $dictionary->unique_nickname }}'</em>?</h2>
+            <h2>No synchronicities mention this dictionary, so you can delete it if desired. Would you like to delete <em>'{{ $dictionary->unique_nickname }}'</em>?</h2>
 
             <input type='submit' value='YES. Delete this dictionary.'>
         </form>

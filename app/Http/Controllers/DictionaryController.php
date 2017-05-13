@@ -196,19 +196,18 @@ class DictionaryController extends Controller
             return redirect('/dictionaries');
         }
 
-        // determine if the dictionary is being used in items:
+        // Determine if any synchronicities mention this dictionary:
         $items = Item::where('dictionary_id', '=', $id)->get();
         if (count($items)==0) {
-            // No items are using this dictionary, so go ahead and display the "are you sure" page:
-            //dump($items);
+            // No synchronicities are using this dictionary, so go ahead and display the "are you sure" page:
             return view('dictionaries.deletedictionary')->with('dictionary', $dictionary);
         }
         else {
-            // A good enhancement would be to display a page with these items, allowing the user to
+            // Display a page with these synchronicities, allowing the user to
             // edit or delete them, to clear the way towards deleting the dictionary:
-            Session::flash('message', 'Items with this dictionary id were found, they have to be deleted or edited first.');
-            //dump($items);
-            return redirect('/dictionaries');
+            Session::flash('message', 'Synchronicities which mention the dictionary that you are trying to delete were found (see below). If you really want to delete this dictionary, these synchronicities have to be deleted, or edited to no longer use this dictionary. Only a dictionary that is not mentioned by synchronicities can be deleted.');
+          
+            return redirect('/itemsfordictionary/'.$id);
         }
 
     } // end of deleteDictionary function

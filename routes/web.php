@@ -17,6 +17,8 @@ Route::post('/edit', 'ItemController@saveItemEdits');
 Route::get('/delete/{id}', 'ItemController@deleteItem');
 Route::post('/delete', 'ItemController@reallyDeleteItem');
 
+Route::get('/itemsfordictionary/{id}', 'ItemController@itemsForDictionary');
+
 
 /*
 |--------------------------------------------------------------------------

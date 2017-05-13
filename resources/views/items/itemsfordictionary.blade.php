@@ -1,4 +1,4 @@
-{{-- /resources/views/items/index.blade.php --}}
+{{-- /resources/views/items/itemsfordictionary.blade.php --}}
 @extends('layouts.master')
 
 @push('head')
@@ -13,12 +13,17 @@
         @if(Session::get('message') != null)
             <div class='flash-message'>{{ Session::get('message') }}</div>
         @endif
-        <h1 class="incidents-header">Synchronicities</h1>
-        <p class="incidents-intro">From <a target='_blank' href="https://en.wikipedia.org/wiki/Synchronicity">Wikipedia</a>: “Synchronicity is a concept, first explained by analytical psychologist Carl Jung, which holds that events are ‘meaningful coincidences’ if they occur with no causal relationship yet seem to be meaningfully related.” This website documents some of my synchronicities, more will be added as time permits.</p>
-        <p class="incidents-intro">The synchronicities fall into two categories: those that involve a <a href="/dictionaries">dictionary</a>, and those that don't. When I quickly flip open a dictionary, place my finger on the page, then look down to see what my finger is pointing to, it often seems non-random. So in the descriptions below, when I say that I “landed on” a certain word, this is what I’m referring to.</p>
+        <h2 class='incidents-subheader'>Synchronicities which mention this dictionary:</h2>
+
+        <div class='dictionary-box'>
+            <h3 class='incident-summary'>{{ $dictionary->unique_nickname }}</h3>
+            <p class='incident-date'>Year published: {{ $dictionary->year_published }}</p>
+            <p class='dictionary-title'>{{ $dictionary->title }}</p>
+        </div>
+
         <div class="spacer40">&#160;</div>
         @if(count($items) == 0)
-            No data found.
+            No synchronicities found which mention this dictionary. Rest assured that they exist, but I haven't yet added them to this website.  Stay tuned...
         @else
             @foreach($items as $item)
                 <div class='item'>
