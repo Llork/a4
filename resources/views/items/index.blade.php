@@ -1,3 +1,4 @@
+{{-- /resources/views/items/index.blade.php --}}
 @extends('layouts.master')
 
 @push('head')

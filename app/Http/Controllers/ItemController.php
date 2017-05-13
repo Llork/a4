@@ -153,6 +153,43 @@ class ItemController extends Controller
 
 
 
+    /**
+    * GET
+    * Ask if user is sure they'd like to delete item
+    */
+    public function deleteItem($id) {
+        $item = Item::find($id);
+        if(is_null($item)) {
+            Session::flash('message', 'The synchronicity that you asked to delete was not found.');
+            return redirect('/');
+        }
+
+        return view('items.delete')->with('item', $item);
+    }
+
+
+    /**
+    * POST
+    * Delete the item
+    */
+    public function reallyDeleteItem(Request $request) {
+        //return 'now in function reallyDeleteItem';
+
+        $item = Item::find($request->id);
+        if(is_null($item)) {
+            Session::flash('message', 'Deletion was unsuccessful, the synchronicity that you asked to delete was not found.');
+            return redirect('/');
+        }
+
+        //add this to dictionary delete method: $dictionary->items()->detach();
+        $item->delete();
+
+        Session::flash('message', '\'' . $item->summary . '\' was deleted.');
+        return redirect('/');
+    }
+
+
+
 
 
 

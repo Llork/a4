@@ -14,6 +14,9 @@ Route::post('/new', 'ItemController@saveNewItem');
 Route::get('/edit/{id}', 'ItemController@editItem');
 Route::post('/edit', 'ItemController@saveItemEdits');
 
+Route::get('/delete/{id}', 'ItemController@deleteItem');
+Route::post('/delete', 'ItemController@reallyDeleteItem');
+
 
 /*
 |--------------------------------------------------------------------------
