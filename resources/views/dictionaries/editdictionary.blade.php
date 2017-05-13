@@ -18,7 +18,6 @@
 
         <form method='POST' action='/edit_dictionary'>
 
-            {{-- Extracted error code to its own view file --}}
             @include('errors')
 
             {{ csrf_field() }}

@@ -18,6 +18,8 @@
 
         <form method='POST' action='/new_dictionary'>
 
+            @include('errors')
+
             {{ csrf_field() }}
 
             <label for='unique_nickname'>Nickname (required, can't already be in use):</label>
@@ -56,9 +58,6 @@
 
             <label for='more_info_link'>'More information' Link:</label>
             <input class='wide' type='text' name='more_info_link' id='more_info_link' value='{{ old('more_info_link') }}'><br><br>
-
-            {{-- Extracted error code to its own view file --}}
-            @include('errors')
 
             <input type='submit' value='Add new Dictionary'>
         </form>

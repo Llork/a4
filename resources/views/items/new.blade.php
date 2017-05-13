@@ -18,6 +18,8 @@
 
         <form method='POST' action='/new'>
 
+            @include('errors')
+
             {{ csrf_field() }}
 
             <small>* Required fields</small><br><br>
@@ -29,7 +31,7 @@
             <input type='text' name='incident_date' id='incident_date' value='{{ old('incident_date', '2017-01-01') }}'><br><br>
 
             <label for='dictionary_id'>* Dictionary (choose 'none' if no dictionary used):</label>
-            <select id='dictionary_id' name='dictionary_id'>                
+            <select id='dictionary_id' name='dictionary_id'>
                 @foreach($dictionaryList as $dictionary_id => $unique_nickname)
                     <option value='{{ $dictionary_id }}'>
                         {{ $unique_nickname }}
@@ -56,9 +58,6 @@
 
             <label for='more_info_link'>'More information' Link:</label>
             <input class='wide' type='text' name='more_info_link' id='more_info_link' value='{{ old('more_info_link') }}'><br><br>
-
-            {{-- Extracted error code to its own view file --}}
-            @include('errors')
 
             <input type='submit' value='Add new Synchronicity'>
         </form>
