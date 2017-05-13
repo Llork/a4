@@ -18,6 +18,9 @@
 
         <form method='POST' action='/edit_dictionary'>
 
+            {{-- Extracted error code to its own view file --}}
+            @include('errors')
+
             {{ csrf_field() }}
 
             <!-- this hidden field is for passing a dictionary id along to the POST method: -->
@@ -60,9 +63,6 @@
 
             <label for='more_info_link'>'More information' Link:</label>
             <input class='wide' type='text' name='more_info_link' id='more_info_link' value='{{ old('more_info_link', $dictionary->more_info_link) }}'><br><br>
-
-            {{-- Extracted error code to its own view file --}}
-            @include('errors')
 
             <input type='submit' value='Save Dictionary Changes'>
         </form>

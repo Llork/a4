@@ -134,10 +134,10 @@ class DictionaryController extends Controller
         // inane reason that the unique_nickname is equal to ITSELF!  I mean, what a dumb
         // default behavior for Laravel, it's like saying "sorry, this email address is already
         // taken -- by you -- so you'll need to change it to something else..."
-        // so by adding .$request->id to the following line, I'm tell Laravel to ignore the
+        // By adding .$request->id to the following line, I'm tell Laravel to ignore the
         // row being edited when seeing if the unique_nickname already exists in the
         // dictionaries table:
-            'unique_nickname' => 'unique:dictionaries,unique_nickname,'.$request->id,
+            'unique_nickname' => 'bail|required|unique:dictionaries,unique_nickname,'.$request->id,
 
             'title' => 'required',
 
