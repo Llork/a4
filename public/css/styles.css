@@ -26,20 +26,12 @@ body {
     width:70%;
 }
 
-.text-area {
-    width:100%;
-}
-
 .dictionary-title {
     color:#333;
     font-family:Verdana, Geneva, sans-serif;
     font-size:20px;
     font-variant:small-caps;
     font-weight:bold;
-}
-
-img#logo {
-    width:250px;
 }
 
 .error-message {
@@ -54,6 +46,24 @@ img#logo {
     font-family:Verdana, Geneva, sans-serif;
     font-weight:bold;
     padding:10px;
+}
+
+h3.incident-summary {
+    margin:0;
+    padding:0;
+}
+
+hr {
+background-color:transparent;
+border-color:black;
+border-style:solid;
+border-width:5px 0px 0px 0px;
+color:transparent;
+height:5px;
+}
+
+img#logo {
+    width:250px;
 }
 
 .incident-date {
@@ -105,18 +115,13 @@ input.wide {
     width:100%;
 }
 
+nav {
+    color:#fff;
+}
+
 p { margin:0;
     padding:0;
     text-align:justify;
-}
-
-h3.incident-summary {
-    margin:0;
-    padding:0;
-}
-
-nav {
-    color:#fff;
 }
 
 .spacer {
@@ -140,4 +145,8 @@ line-height:40px;
 
 textarea {
     font-size:12px;
+}
+
+.text-area {
+    width:100%;
 }

@@ -197,15 +197,17 @@ class DictionaryController extends Controller
         }
 
         // determine if the dictionary is being used in items:
-        $items = Item::where('id', '=', $id)->get();
+        $items = Item::where('dictionary_id', '=', $id)->get();
         if (count($items)==0) {
             // No items are using this dictionary, so go ahead and display the "are you sure" page:
+            //dump($items);
             return view('dictionaries.deletedictionary')->with('dictionary', $dictionary);
         }
         else {
             // A good enhancement would be to display a page with these items, allowing the user to
             // edit or delete them, to clear the way towards deleting the dictionary:
             Session::flash('message', 'Items with this dictionary id were found, they have to be deleted or edited first.');
+            //dump($items);
             return redirect('/dictionaries');
         }
 
