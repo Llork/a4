@@ -9,6 +9,11 @@ a.nav:hover, a.nav:active {
     font-family:Verdana, Geneva, sans-serif;
 }
 
+.admin-container {
+    float:right;
+    width:100px;
+}
+
 body {
     background-color:#ee3839;
 }

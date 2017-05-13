@@ -33,7 +33,10 @@
                     @if(isset($item->more_info_link))
                         <p><span class='incident-more-info'>Related:</span> <a target='_blank' href='{{$item->more_info_link}}'>{{$item->more_info_link}}</a></p>
                     @endif
-
+                    <div class="spacer">&#160;</div>
+                    <div class='admin-container'>
+                        <a class='admin' href='/edit/{{ $item->id }}'><img src='/images/edit.png'></a><a class='admin' href='/delete/{{ $item->id }}'><img src='/images/delete.png'></a>
+                    </div>
                     <div class="spacer10">&#160;</div>
                     <hr>
                     <div class="spacer10">&#160;</div>

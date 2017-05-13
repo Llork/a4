@@ -126,15 +126,29 @@ class DictionaryController extends Controller
             'unique_nickname.unique' => 'The unique nickname of \'' . $request->unique_nickname . '\' has already been taken.',
         ];
 
-        // validate the request.  To prevent empty image_url and more_info_link
-        // fields from causing validation errors, I had to include 'nullable':
+        // validate the request:
         $this->validate($request, [
-            'unique_nickname' => 'required|unique:dictionaries,unique_nickname',
+
+        // credit to https://laracasts.com/discuss/channels/requests/problem-with-unique-field-validation-on-update
+        // for providing solution to the problem where unique_nickname 'unique' validation was failing for the
+        // inane reason that the unique_nickname is equal to ITSELF!  I mean, what a dumb
+        // default behavior for Laravel, it's like saying "sorry, this email address is already
+        // taken -- by you -- so you'll need to change it to something else..."
+        // so by adding .$request->id to the following line, I'm tell Laravel to ignore the
+        // row being edited when seeing if the unique_nickname already exists in the
+        // dictionaries table:
+            'unique_nickname' => 'unique:dictionaries,unique_nickname,'.$request->id,
+
             'title' => 'required',
-            //commnted out because it won't let me have relative image urls:
+
+            //commnted out because it wasn't letting me have relative image urls:
             //'image_url' => 'nullable|url',
+
+            // To prevent empty more_info_link field from causing validation errors,
+            // I had to include 'nullable':
             'more_info_link' => 'nullable|url'
         ], $messages);
+
 
         // get the existing dictionary from the database:
         $existingDictionary = Dictionary::find($request->id);
@@ -145,6 +159,7 @@ class DictionaryController extends Controller
         // assign form (request) data to the existing dictionary:
         $existingDictionary->unique_nickname = $request->unique_nickname;
         $existingDictionary->title = $request->title;
+        //$existingDictionary->title = 'this is a test';
         $existingDictionary->year_published = $request->year_published;
         $existingDictionary->year_acquired = $request->year_acquired;
         $existingDictionary->cover_type = $request->cover_type;
@@ -155,6 +170,8 @@ class DictionaryController extends Controller
         $existingDictionary->comments = $request->comments;
         $existingDictionary->image_url = $request->image_url;
         $existingDictionary->more_info_link = $request->more_info_link;
+
+        //dump($existingDictionary);
 
         // save the data to the dictionaries table:
         $existingDictionary->save();
@@ -205,7 +222,7 @@ class DictionaryController extends Controller
         if(is_null($dictionary)) {
             Session::flash('message', 'Deletion was unsuccessful, the dictionary that you asked to delete was not found.');
             return redirect('/dictionaries');
-        }        
+        }
 
         // delete the table row:
         $dictionary->delete();

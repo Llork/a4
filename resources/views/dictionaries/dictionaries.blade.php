@@ -29,7 +29,10 @@
                     @if(isset($dictionary->comments))
                         <p>{{ $dictionary->comments }}</p>
                     @endif
-
+                    <div class="spacer">&#160;</div>
+                    <div class='admin-container'>
+                        <a class='admin' href='/edit_dictionary/{{ $dictionary->id }}'><img src='/images/edit.png'></a><a class='admin' href='/delete_dictionary/{{ $dictionary->id }}'><img src='/images/delete.png'></a>
+                    </div>
                     <div class="spacer10">&#160;</div>
                     <hr>
                     <div class="spacer10">&#160;</div>
