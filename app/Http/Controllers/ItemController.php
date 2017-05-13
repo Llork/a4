@@ -16,9 +16,13 @@ class ItemController extends Controller
 	*/
     public function index() {
         $items = Item::orderBy('summary')->get(); # Database query
+
+        //dump($items);
+
         return view('items.index')->with([
             'items' => $items,
         ]);
+    
     } // end of index function
 
 
@@ -180,7 +184,7 @@ class ItemController extends Controller
             Session::flash('message', 'Deletion was unsuccessful, the synchronicity that you asked to delete was not found.');
             return redirect('/');
         }
-        
+
         $item->delete();
 
         Session::flash('message', '\'' . $item->summary . '\' was deleted.');

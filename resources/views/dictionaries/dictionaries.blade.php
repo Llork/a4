@@ -13,7 +13,7 @@
             <div class='flash-message'>{{ Session::get('message') }}</div>
         @endif
         <h1 class="incidents-header">Dictionaries</h1>
-        <p class="incidents-intro">Here is a partial listing of my dictionaries.</p>
+        <p class="incidents-intro">Here are some of the dictionaries that I own. When time permits, I'll add my other dictionaries to this website.</p>
         <div class="spacer40">&#160;</div>
         @if(count($dictionaries) == 0)
             No data found.
