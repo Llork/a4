@@ -152,7 +152,6 @@ class ItemController extends Controller
     } // end of saveItemEdits function
 
 
-
     /**
     * GET
     * Ask if user is sure they'd like to delete item
@@ -165,7 +164,8 @@ class ItemController extends Controller
         }
 
         return view('items.delete')->with('item', $item);
-    }
+
+    } // end of deleteItem function
 
 
     /**
@@ -180,17 +180,13 @@ class ItemController extends Controller
             Session::flash('message', 'Deletion was unsuccessful, the synchronicity that you asked to delete was not found.');
             return redirect('/');
         }
-
-        //add this to dictionary delete method: $dictionary->items()->detach();
+        
         $item->delete();
 
         Session::flash('message', '\'' . $item->summary . '\' was deleted.');
         return redirect('/');
-    }
 
-
-
-
+    } // end of reallyDeleteItem function
 
 
 }

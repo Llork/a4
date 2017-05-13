@@ -164,8 +164,57 @@ class DictionaryController extends Controller
         Session::flash('message', 'The dictionary \'' . $request->unique_nickname . '\' was changed.');
         return redirect('/edit_dictionary/'.$request->id);
 
-
     } // end of editDictionary function
+
+
+    /**
+    * GET
+    * Ask if user is sure they'd like to delete dictionary
+    */
+    public function deleteDictionary($id) {
+        $dictionary = Dictionary::find($id);
+
+        if(is_null($dictionary)) {
+            Session::flash('message', 'The dictionary that you asked to delete was not found.');
+            return redirect('/dictionaries');
+        }
+
+        // determine if the dictionary is being used in items:
+        $items = Item::where('id', '=', $id)->get();
+        if (count($items)==0) {
+            // No items are using this dictionary, so go ahead and display the "are you sure" page:
+            return view('dictionaries.deletedictionary')->with('dictionary', $dictionary);
+        }
+        else {
+            // A good enhancement would be to display a page with these items, allowing the user to
+            // edit or delete them, to clear the way towards deleting the dictionary:
+            Session::flash('message', 'Items with this dictionary id were found, they have to be deleted or edited first.');
+            return redirect('/dictionaries');
+        }
+
+    } // end of deleteDictionary function
+
+
+    /**
+    * POST
+    * Delete the dictionary
+    */
+    public function reallyDeleteDictionary(Request $request) {
+
+        $dictionary = Dictionary::find($request->id);
+        if(is_null($dictionary)) {
+            Session::flash('message', 'Deletion was unsuccessful, the dictionary that you asked to delete was not found.');
+            return redirect('/dictionaries');
+        }        
+
+        // delete the table row:
+        $dictionary->delete();
+
+        Session::flash('message', '\'' . $dictionary->unique_nickname . '\' was deleted.');
+        return redirect('/dictionaries');
+
+    } // end of reallyDeleteDictionary function
+
 
 
 }

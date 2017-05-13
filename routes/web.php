@@ -32,6 +32,9 @@ Route::post('/new_dictionary', 'DictionaryController@saveNewDictionary');
 Route::get('/edit_dictionary/{id}', 'DictionaryController@editDictionary');
 Route::post('/edit_dictionary', 'DictionaryController@saveDictionaryEdits');
 
+Route::get('/delete_dictionary/{id}', 'DictionaryController@deleteDictionary');
+Route::post('/delete_dictionary', 'DictionaryController@reallyDeleteDictionary');
+
 
 /*
 |--------------------------------------------------------------------------
