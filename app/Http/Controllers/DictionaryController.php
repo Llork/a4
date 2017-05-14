@@ -53,6 +53,10 @@ class DictionaryController extends Controller
         $this->validate($request, [
             'unique_nickname' => 'required|unique:dictionaries,unique_nickname',
             'title' => 'required',
+            'year_published' => 'nullable|digits:4',
+            'year_acquired' => 'nullable|digits:4',
+            'pages' => 'nullable|integer',
+            'columns_per_page' => 'nullable|integer|between:1,5',
             'image_url' => 'nullable|url',
             'more_info_link' => 'nullable|url'
         ], $messages);
@@ -206,7 +210,7 @@ class DictionaryController extends Controller
             // Display a page with these synchronicities, allowing the user to
             // edit or delete them, to clear the way towards deleting the dictionary:
             Session::flash('message', 'Synchronicities which mention the dictionary that you are trying to delete were found (see below). If you really want to delete this dictionary, these synchronicities have to be deleted, or edited to no longer use this dictionary. Only a dictionary that is not mentioned by synchronicities can be deleted.');
-          
+
             return redirect('/itemsfordictionary/'.$id);
         }
 
