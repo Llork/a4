@@ -1,3 +1,4 @@
+{{-- /resources/views/dictionaries/dictionaries.blade.php --}}
 @extends('layouts.master')
 
 @push('head')
