@@ -10,8 +10,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        // $this->call(UsersTableSeeder::class);
+    {        
         $this->call(DictionariesTableSeeder::class);
         $this->call(ItemsTableSeeder::class);
         $this->call(TopicsTableSeeder::class);

@@ -13,21 +13,16 @@ class ItemTopicTableSeeder extends Seeder
      */
     public function run()
     {
-        # create an array of the items to associate topics with
-        # key is item's summary, and value is array of topics.
-
-        // At first, it was crashing because in the following, I
-        // had it spelled 'Franlin' instead of 'Franklin',
-        // then after fixing that it gave me another error, because
-        // I had it spelled 'found object' instead of 'found objects':
+        // create an array of the items to associate topics with
+        // key is item's summary, and value is array of topics:
 
         $items =[
             'Lyons' => ['work'],
             'Oak Tree' => ['dictionary','home'],
-            'Franklin Pierce' => ['commute','found objects','jeopardy']            
+            'Franklin Pierce' => ['commute','found objects','jeopardy']
         ];
 
-        # loop through the array, creating a new pivot for each item to tag with topic
+        # loop through the array, creating a new pivot for each item to topic with topic
         foreach($items as $summary => $topics) {
 
             # First get the item

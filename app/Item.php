@@ -17,9 +17,7 @@ class Item extends Model
 
 
     public function topics() {
-
-        return $this->belongsToMany('App\Topic')->withTimestamps();
- 
+        return $this->belongsToMany('App\Topic')->withTimestamps(); 
     }
 
 
