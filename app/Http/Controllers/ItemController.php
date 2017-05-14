@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Dictionary;
 use App\Item;
+use App\Topic;
 use Session;
 
 class ItemController extends Controller
@@ -32,10 +33,8 @@ class ItemController extends Controller
     * retrieve only those rows from the items table which mention the specified dictionary
 	*/
     public function itemsForDictionary($id) {
-        // $items = Item::where('dictionary_id', '=', $id)->get()->orderBy('summary'); # Database query
-        $items = Item::where('dictionary_id', '=', $id)->get(); # Database query
+        $items = Item::orderBy('summary')->where('dictionary_id', '=', $id)->get(); // Database query
         $dictionary = Dictionary::find($id);
-        //dump($items);
 
         return view('items.itemsfordictionary')->with([
             'dictionary' => $dictionary,
@@ -71,7 +70,7 @@ class ItemController extends Controller
         $this->validate($request, [
             'summary' => 'required',
             'incident_date' => 'required|date',
-            //commnted out because it won't let me have relative image urls:
+            //commented out because it won't let me have relative image urls:
             //'image_url' => 'nullable|url',
             'more_info_link' => 'nullable|url',
             'dictionary_id' => 'required'
@@ -113,7 +112,17 @@ class ItemController extends Controller
     */
     public function editItem($id) {
 
-        $item = Item::find($id);
+        $item = Item::with('topics')->find($id);
+
+        // Get all available topics to list in checkboxes on the view:
+        $topicsForCheckboxes = Topic::getTopicsForCheckboxes();
+
+        // Determine which topics this item already has associated with it,
+        // so that we know which checkboxes to check when the view first loads:
+        $topicsForExistingItem = [];
+        foreach($item->topics as $topic) {
+            $topicsForExistingItem[] = $topic->topic_name;
+        }
 
         if(is_null($item)) {
             Session::flash('message', 'The synchronicity that you requested was not found.');
@@ -124,6 +133,8 @@ class ItemController extends Controller
         $now = \Carbon\Carbon::now()->toDateTimeString();
         return view('items.edit')->with([
             'dictionaryList' => $dictionaryList,
+            'topicsForCheckboxes' => $topicsForCheckboxes,
+            'topicsForExistingItem' => $topicsForExistingItem,
             'now' => $now,
             'id' => $id,
             'item' => $item
@@ -144,7 +155,7 @@ class ItemController extends Controller
         $this->validate($request, [
             'summary' => 'required',
             'incident_date' => 'required|date',
-            //commnted out because it won't let me have relative image urls:
+            //commented out because it won't let me have relative image urls:
             //'image_url' => 'nullable|url',
             'more_info_link' => 'nullable|url',
             'dictionary_id' => 'required'
@@ -163,6 +174,19 @@ class ItemController extends Controller
         $existingItem->image_url = $request->image_url;
         $existingItem->more_info_link = $request->more_info_link;
         $existingItem->dictionary_id = $request->dictionary_id;
+
+        // If topics were chosen, put them into the $topics array:
+        if($request->topics) {
+            $topics = $request->topics;
+        }
+        // Else if no topics were chosen, define an
+        // empty array of topics:
+        else {
+            $topics = [];
+        }
+
+        // Sync the topics:
+        $existingItem->topics()->sync($topics);
 
         // save the data to the items table:
         $existingItem->save();
@@ -204,6 +228,11 @@ class ItemController extends Controller
             return redirect('/');
         }
 
+        // To allow the item to be deleted, the corresponding rows in the
+        // pivot table (item_topic table) must first be deleted:
+        $item->topics()->detach();
+
+        // Delete the item (synchronicity) row:
         $item->delete();
 
         Session::flash('message', '\'' . $item->summary . '\' was deleted.');

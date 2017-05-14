@@ -65,6 +65,18 @@
             <label for='more_info_link'>'More information' Link:</label>
             <input class='wide' type='text' name='more_info_link' id='more_info_link' value='{{ old('more_info_link', $item->more_info_link) }}'><br><br>
 
+            <label for='topics[]'>Topics:</label><br>
+            @foreach($topicsForCheckboxes as $id => $topic_name)
+                <input
+                    type='checkbox'
+                    value='{{ $id }}'
+                    name='topics[]'
+                    {{ (in_array($topic_name, $topicsForExistingItem)) ? 'CHECKED' : '' }}
+                >
+                {{ $topic_name }} <br>
+            @endforeach
+
+            <br><br>
             <input type='submit' value='Save Synchronicity Changes'>
         </form>
 
