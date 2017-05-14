@@ -55,10 +55,10 @@ class DictionaryController extends Controller
             'unique_nickname' => 'required|unique:dictionaries,unique_nickname',
             'title' => 'required',
             'year_published' => 'nullable|digits:4',
-            'year_acquired' => 'nullable|digits:4',
             'pages' => 'nullable|integer',
             'columns_per_page' => 'nullable|integer|between:1,5',
-            'image_url' => 'nullable|url',
+            //commented out because it wasn't letting me have relative image urls:
+            //'image_url' => 'nullable|url',
             'more_info_link' => 'nullable|url'
         ], $messages);
 
@@ -138,12 +138,12 @@ class DictionaryController extends Controller
         // row being edited when seeing if the unique_nickname already exists in the
         // dictionaries table:
             'unique_nickname' => 'bail|required|unique:dictionaries,unique_nickname,'.$request->id,
-
             'title' => 'required',
-
-            //commnted out because it wasn't letting me have relative image urls:
+            'year_published' => 'nullable|digits:4',
+            'pages' => 'nullable|integer',
+            'columns_per_page' => 'nullable|integer|between:1,5',
+            //commented out because it wasn't letting me have relative image urls:
             //'image_url' => 'nullable|url',
-
             // To prevent empty more_info_link field from causing validation errors,
             // I had to include 'nullable':
             'more_info_link' => 'nullable|url'
@@ -156,7 +156,6 @@ class DictionaryController extends Controller
         // assign form (request) data to the existing dictionary:
         $existingDictionary->unique_nickname = $request->unique_nickname;
         $existingDictionary->title = $request->title;
-        //$existingDictionary->title = 'this is a test';
         $existingDictionary->year_published = $request->year_published;
         $existingDictionary->year_acquired = $request->year_acquired;
         $existingDictionary->cover_type = $request->cover_type;
@@ -166,7 +165,7 @@ class DictionaryController extends Controller
         $existingDictionary->location = $request->location;
         $existingDictionary->comments = $request->comments;
         $existingDictionary->image_url = $request->image_url;
-        $existingDictionary->more_info_link = $request->more_info_link;        
+        $existingDictionary->more_info_link = $request->more_info_link;
 
         // save the data to the dictionaries table:
         $existingDictionary->save();
