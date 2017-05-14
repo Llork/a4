@@ -21,7 +21,7 @@
             @foreach($dictionaries as $dictionary)
                 <div class='item'>
                     @if(isset($dictionary->image_url))
-                        <img class="incident-image" src='{{$dictionary->image_url}}'>
+                        <img alt='dictionary' class="incident-image" src='{{$dictionary->image_url}}'>
                     @endif
                     <h3 class='incident-summary'>{{ $dictionary->unique_nickname }}</h3>
                     <p class='incident-date'>Year published: {{ $dictionary->year_published }}</p>
@@ -33,7 +33,7 @@
                     <p><a class='non-nav' href='/itemsfordictionary/{{ $dictionary->id }}'>Synchroncities which mention this dictionary &raquo;</a></p>
                     <div class="spacer clear">&#160;</div>
                     <div class='admin-container'>
-                        <a class='admin' href='/edit_dictionary/{{ $dictionary->id }}'><img src='/images/edit.png'></a><a class='admin' href='/delete_dictionary/{{ $dictionary->id }}'><img src='/images/delete.png'></a>
+                        <a class='admin' href='/edit_dictionary/{{ $dictionary->id }}'><img alt='edit dictionary' src='/images/edit.png'></a><a class='admin' href='/delete_dictionary/{{ $dictionary->id }}'><img alt='delete dictionary' src='/images/delete.png'></a>
                     </div>
                     <div class="spacer10 clear">&#160;</div>
                     <hr>

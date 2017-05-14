@@ -1,4 +1,4 @@
-{{-- This is based on foobooks from DWA=15: --}}
+{{-- This is based on foobooks from DWA 15: --}}
 
 @if(count($errors) > 0)
     <div class='error-message'>

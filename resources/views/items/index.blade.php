@@ -23,7 +23,7 @@
             @foreach($items as $item)
                 <div class='item'>
                     @if(isset($item->image_url))
-                        <img class="incident-image" src='{{$item->image_url}}'>
+                        <img alt='synchronicity' class="incident-image" src='{{$item->image_url}}'>
                     @endif
                     <h3 class='incident-summary'>{{ $item->summary }}</h3>
                     <p class='incident-date'>{{$item->incident_date . '.'}}
@@ -35,7 +35,7 @@
                     @endif
                     <div class="spacer clear">&#160;</div>
                     <div class='admin-container'>
-                        <a class='admin' href='/edit/{{ $item->id }}'><img src='/images/edit.png'></a><a class='admin' href='/delete/{{ $item->id }}'><img src='/images/delete.png'></a>
+                        <a class='admin' href='/edit/{{ $item->id }}'><img alt='edit synchronicity' src='/images/edit.png'></a><a class='admin' href='/delete/{{ $item->id }}'><img alt='delete synchronicity' src='/images/delete.png'></a>
                     </div>
                     <div class="spacer10 clear">&#160;</div>
                     <hr>
