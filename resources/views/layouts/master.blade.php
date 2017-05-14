@@ -11,7 +11,7 @@
 <body>
     <div id='content'>
         <header>
-            <a href='/'><img id="logo" src='/images/design15_logo.png' alt='Design15 logo'></a>
+            <a href='/'><img alt='Welcome to Design15.com' id="logo" src='/images/design15_logo.png' alt='Design15 logo'></a>
         </header>
         <nav>
           <a class="nav" href="/">Home</a> |
