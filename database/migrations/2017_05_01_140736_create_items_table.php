@@ -24,7 +24,7 @@ class CreateItemsTable extends Migration
      		# you can know when a given row was created and last modified:
      		$table->timestamps();
 
-     		# Build the remaining columns:     		
+     		# Build the remaining columns:
             $table->string('summary');
             $table->string('dictionary_word1')->nullable();
             $table->string('dictionary_word2')->nullable();
@@ -33,9 +33,7 @@ class CreateItemsTable extends Migration
      		$table->date('incident_date');
 
      		$table->string('image_url')->nullable();
-     		$table->string('more_info_link')->nullable();
-
-     		# FYI: skipping the 'tags' field for now, since I still have to view lecture 13...
+     		$table->string('more_info_link')->nullable();    	
 
      	});
 

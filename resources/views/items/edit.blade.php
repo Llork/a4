@@ -30,10 +30,10 @@
             <label for='summary'>* Summary:</label>
             <input class='wide' type='text' name='summary' id='summary' value='{{ old('summary', $item->summary) }}'><br><br>
 
-            <label for='incident_date'>* Date of Incident:</label>
+            <label for='incident_date'>* Date of Incident (date format yyyy-mm-dd):</label>
             <input type='text' name='incident_date' id='incident_date' value='{{ old('incident_date', $item->incident_date) }}'><br><br>
 
-            <label for='dictionary_id'>* Dictionary (choose 'none' if no dictionary used):</label>
+            <label for='dictionary_id'>Dictionary (choose 'none' if no dictionary used):</label>
             <select id='dictionary_id' name='dictionary_id'>
                 <!-- Credit to DWA-15 lecture 13, part 3 minute 8 on how to pre-select the dropdown
                 with current value for dictionary -->

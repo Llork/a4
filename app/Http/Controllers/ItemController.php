@@ -16,9 +16,7 @@ class ItemController extends Controller
     * retrieve all rows from the items table
 	*/
     public function index() {
-        $items = Item::orderBy('summary')->get(); # Database query
-
-        //dump($items);
+        $items = Item::orderBy('summary')->get(); // Database query
 
         return view('items.index')->with([
             'items' => $items,
@@ -50,6 +48,7 @@ class ItemController extends Controller
     * Add a new item
     */
     public function createNewItem(Request $request) {
+
         $dictionaryList = Dictionary::getDictionaryList();
         $now = \Carbon\Carbon::now()->toDateTimeString();
         return view('items.new')->with([
@@ -58,6 +57,7 @@ class ItemController extends Controller
         ]);
     } // end of createNewItem function
 
+
     /**
     * POST
     * /new
@@ -65,22 +65,23 @@ class ItemController extends Controller
     */
     public function saveNewItem(Request $request) {
 
+        $messages = [
+            'incident_date.date_format' => 'Incident Date must be yyyy-mm-dd (not yyyy-m-d, yyyy/mm/dd, mm-dd-yyyy etc).',
+        ];
+
         // validate the request.  To prevent empty image_url and more_info_link
         // fields from causing validation errors, I had to include 'nullable':
         $this->validate($request, [
             'summary' => 'required',
-            'incident_date' => 'required|date',
+            'incident_date' => 'required|date_format:Y-m-d',
             //commented out because it won't let me have relative image urls:
             //'image_url' => 'nullable|url',
             'more_info_link' => 'nullable|url',
             'dictionary_id' => 'required'
-        ]);
+        ], $messages);
 
         // instantiate a new object from the Item class:
         $newItem = new Item();
-
-        // dump($newItem);
-        //dump($request);
 
         // assign form (request) data to the new object:
         $newItem->summary = $request->summary;
@@ -150,16 +151,20 @@ class ItemController extends Controller
     */
     public function saveItemEdits(Request $request) {
 
+        $messages = [
+            'incident_date.date_format' => 'Incident Date must be yyyy-mm-dd (not yyyy-m-d, yyyy/mm/dd, mm-dd-yyyy etc).',
+        ];
+
         // validate the request.  To prevent empty image_url and more_info_link
         // fields from causing validation errors, I had to include 'nullable':
         $this->validate($request, [
             'summary' => 'required',
-            'incident_date' => 'required|date',
+            'incident_date' => 'required|date_format:Y-m-d',
             //commented out because it won't let me have relative image urls:
             //'image_url' => 'nullable|url',
             'more_info_link' => 'nullable|url',
             'dictionary_id' => 'required'
-        ]);
+        ], $messages);
 
         // Get existing item from the database:
         $existingItem = Item::find($request->id);

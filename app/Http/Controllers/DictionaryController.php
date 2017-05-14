@@ -37,6 +37,7 @@ class DictionaryController extends Controller
         ]);
     } // end of createNewDictionary function
 
+
     /**
     * POST
     * /new_dictionary
@@ -63,9 +64,6 @@ class DictionaryController extends Controller
 
         // instantiate a new object from the Item class:
         $newDictionary = new Dictionary();
-
-        // dump($newDictionary);
-        //dump($request);
 
         // assign form (request) data to the new object:
         $newDictionary->unique_nickname = $request->unique_nickname;
@@ -124,8 +122,6 @@ class DictionaryController extends Controller
     */
     public function saveDictionaryEdits(Request $request) {
 
-        //return 'now in the post function saveDictionaryEdits';
-
         $messages = [
             'unique_nickname.unique' => 'The unique nickname of \'' . $request->unique_nickname . '\' has already been taken.',
         ];
@@ -157,9 +153,6 @@ class DictionaryController extends Controller
         // get the existing dictionary from the database:
         $existingDictionary = Dictionary::find($request->id);
 
-        // dump($existingDictionary);
-        //dump($request);
-
         // assign form (request) data to the existing dictionary:
         $existingDictionary->unique_nickname = $request->unique_nickname;
         $existingDictionary->title = $request->title;
@@ -173,9 +166,7 @@ class DictionaryController extends Controller
         $existingDictionary->location = $request->location;
         $existingDictionary->comments = $request->comments;
         $existingDictionary->image_url = $request->image_url;
-        $existingDictionary->more_info_link = $request->more_info_link;
-
-        //dump($existingDictionary);
+        $existingDictionary->more_info_link = $request->more_info_link;        
 
         // save the data to the dictionaries table:
         $existingDictionary->save();
